@@ -3,9 +3,11 @@
 
 #include "../include/include.h"
 
-#include "tool_bar/tools.h"
+#include "tools.h"
+#include "scroll_chat.h"
 
 class Tools;
+class ScrollChat;
 
 class Messanger : public MainWindow
 {
@@ -19,6 +21,7 @@ protected:
 private:
         Widget*         centralWidget;
         Tools*          tools;
+        ScrollChat*     chat;
 };
 
 #endif // MESSANGER_H

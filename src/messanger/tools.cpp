@@ -1,10 +1,15 @@
 #include "tools.h"
 
-#include "../../read_file.h"
+#include "../read_file.h"
+#include "../messages/text_message.h"
+#include "../messages/abstract.h"
 
-Tools::Tools(Widget* parent)
+Tools::Tools(Widget* parent, Widget* chat, ScrollArea* scrollWidget)
 {
-        this->setParent(parent);
+        this->parent            = parent;
+        this->chat              = chat;
+        this->scrollWidget      = scrollWidget;
+        this->setParent(this->parent);
         this->setMinimumSize(MINIMUM_MESSAGER_WIDTH, 60);
         this->setGeometry(10, MINIMUM_MESSAGER_HEIGHT - 70, MINIMUM_MESSAGER_WIDTH - 20, 50);
 
@@ -29,6 +34,9 @@ Tools::Tools(Widget* parent)
         share->setStyleSheet(read("../styles/button.css"));
         message->setStyleSheet(read("../styles/message_text.css"));
         this->setStyleSheet(read("../styles/tool_bar.css"));
+
+        Object::connect(send, &PushButton::clicked, this, &Tools::createTextMessageSlot);
+        Object::connect(message, &LineEdit::returnPressed, this, &Tools::createTextMessageSlot);
 }
 
 void Tools::resizeEvent(ResizeEvent* event)
@@ -38,4 +46,13 @@ void Tools::resizeEvent(ResizeEvent* event)
         share->setGeometry(width() - 55, 5, 50, 50);
 
         Widget::resizeEvent(event);
+}
+
+void Tools::createTextMessageSlot()
+{
+        if (message->text().isEmpty()) return;
+        
+        u_sh __pos = AbstractMessage::count() % 2 == 0 ? MessagePosition::RIGHT : MessagePosition::LEFT; 
+        AbstractMessage* newTextMessage = new TextMessage(scrollWidget, chat, parent, __pos, message->text());
+        message->clear();
 }

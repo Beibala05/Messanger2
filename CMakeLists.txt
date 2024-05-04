@@ -14,15 +14,21 @@ include_directories(src)
 set(SOURCES
     src/app/main.cpp
     src/messanger/messanger.cpp
-    src/messanger/tool_bar/tools.cpp
+    src/messanger/tools.cpp
     src/read_file.cpp
+    src/messages/abstract.cpp
+    src/messages/text_message.cpp
+    src/messanger/scroll_chat.cpp
 )
 
 set(HEADERS
     src/include/include.h
     src/messanger/messanger.h
-    src/messanger/tool_bar/tools.h
+    src/messanger/tools.h
     src/read_file.h
+    src/messages/abstract.h
+    src/messages/text_message.h
+    src/messanger/scroll_chat.h
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
@@ -34,6 +40,9 @@ set(CSS_FILES
     styles/main.css
     styles/tool_bar.css
     styles/message_text.css
+    styles/message.css
+    styles/chat.css
+    styles/message_item.css
 )
 
 foreach(CSS_FILE ${CSS_FILES})

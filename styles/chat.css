@@ -1,6 +1,6 @@
-QLineEdit {
+QWidget {
         background-color: #26262e;
         border: 2px solid #26262e;
-        border-radius: 10px;
+        border-radius: 0px;
         color: white;
 }
