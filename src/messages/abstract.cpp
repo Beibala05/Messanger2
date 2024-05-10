@@ -4,6 +4,7 @@
 #include "../messanger/scroll_chat.h"
 
 std::vector<AbstractMessage *> AbstractMessage::messages;
+int AbstractMessage::abstractMessageWidth = 500;
 
 AbstractMessage::AbstractMessage()
 {
@@ -31,11 +32,11 @@ void AbstractMessage::setSizes(u_sh pos, int height)
         if (mainWindow)
         {
                 if (pos == MessagePosition::RIGHT)
-                        this->setGeometry(mainWindow->width() - 255, ScrollChat::getChatHeight(), 250, height);
+                        this->setGeometry(mainWindow->width() - abstractMessageWidth, ScrollChat::getChatHeight(), abstractMessageWidth, height);
                 else
-                        this->setGeometry(5, ScrollChat::getChatHeight(), 250, height);
+                        this->setGeometry(5, ScrollChat::getChatHeight(), abstractMessageWidth, height);
 
-                time->setGeometry(0, height - 20, 250, 20);
+                time->setGeometry(0, height - 20, abstractMessageWidth, 20);
         }
 
         this->pos = pos;
@@ -69,7 +70,7 @@ void AbstractMessage::correctCoordsForRightMessages(int width)
                 if (AbstractMessage::messages[i]->pos == MessagePosition::RIGHT)
                 {
                         int y_coor = AbstractMessage::messages[i]->y();
-                        AbstractMessage::messages[i]->setGeometry(width - 255, y_coor,
+                        AbstractMessage::messages[i]->setGeometry(width - AbstractMessage::abstractMessageWidth, y_coor,
                         AbstractMessage::messages[i]->width(), AbstractMessage::messages[i]->height());
                 }
         }

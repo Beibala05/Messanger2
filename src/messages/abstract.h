@@ -24,6 +24,9 @@ public:
         static void correctCoordsForRightMessages(int width);
         static int  count();
 
+public:
+        static int abstractMessageWidth;
+
 private:
         String getCurrentTime();
 

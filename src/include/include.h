@@ -19,9 +19,12 @@
 #include <QLabel>
 #include <QScrollArea>
 #include <QTime>
+#include <QFileDialog>
+#include <QStringList>
+#include <QPixmap>
 
-#define MINIMUM_MESSAGER_HEIGHT 600
-#define MINIMUM_MESSAGER_WIDTH  775
+#define MINIMUM_MESSAGER_HEIGHT 600 * 1.5
+#define MINIMUM_MESSAGER_WIDTH  775 * 1.5
 
 using Application       = QApplication;
 using MainWindow        = QMainWindow;
@@ -38,6 +41,9 @@ using Object            = QObject;
 using Label             = QLabel;
 using ScrollArea        = QScrollArea;
 using Time              = QTime;
+using FileDialog        = QFileDialog;
+using StringList        = QStringList;
+using Pixmap            = QPixmap;
 
 typedef unsigned short u_sh;
 

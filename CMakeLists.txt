@@ -18,6 +18,7 @@ set(SOURCES
     src/read_file.cpp
     src/messages/abstract.cpp
     src/messages/text_message.cpp
+    src/messages/photo_message.cpp
     src/messanger/scroll_chat.cpp
 )
 
@@ -28,6 +29,7 @@ set(HEADERS
     src/read_file.h
     src/messages/abstract.h
     src/messages/text_message.h
+    src/messages/photo_message.h
     src/messanger/scroll_chat.h
 )
 

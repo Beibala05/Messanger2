@@ -1,8 +1,10 @@
 #include "tools.h"
 
 #include "../read_file.h"
-#include "../messages/text_message.h"
+
 #include "../messages/abstract.h"
+#include "../messages/text_message.h"
+#include "../messages/photo_message.h"
 
 Tools::Tools(Widget* parent, Widget* chat, ScrollArea* scrollWidget)
 {
@@ -36,6 +38,7 @@ Tools::Tools(Widget* parent, Widget* chat, ScrollArea* scrollWidget)
         this->setStyleSheet(read("../styles/tool_bar.css"));
 
         Object::connect(send, &PushButton::clicked, this, &Tools::createTextMessageSlot);
+        Object::connect(share, &PushButton::clicked, this, &Tools::shareDataSlot);
         Object::connect(message, &LineEdit::returnPressed, this, &Tools::createTextMessageSlot);
 }
 
@@ -52,7 +55,27 @@ void Tools::createTextMessageSlot()
 {
         if (message->text().isEmpty()) return;
         
-        u_sh __pos = AbstractMessage::count() % 2 == 0 ? MessagePosition::RIGHT : MessagePosition::LEFT; 
-        AbstractMessage* newTextMessage = new TextMessage(scrollWidget, chat, parent, __pos, message->text());
+        u_sh position = AbstractMessage::count() % 2 == 0 ? MessagePosition::RIGHT : MessagePosition::LEFT; 
+        AbstractMessage* newTextMessage = new TextMessage(scrollWidget, chat, parent, position, message->text());
         message->clear();
+}
+
+void Tools::shareDataSlot()
+{
+        StringList supportedFormats;
+        supportedFormats << "*.png" << "*.mp4" << "*.jpg";
+
+        String selectedFilter;
+        String fileDir = FileDialog::getOpenFileName(this, tr("Open File"), "", supportedFormats.join(";;"), &selectedFilter);
+
+        if (fileDir != "")
+        {
+                u_sh position = AbstractMessage::count() % 2 == 0 ? MessagePosition::RIGHT : MessagePosition::LEFT; 
+                AbstractMessage* newPhotoMessage = new PhotoMessage(scrollWidget, chat, parent, position, fileDir);
+                message->clear();
+
+                qDebug() << fileDir;
+        }
+        else
+                qDebug() << "error";
 }

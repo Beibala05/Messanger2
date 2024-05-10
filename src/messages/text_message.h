@@ -15,6 +15,7 @@ private:
 
 private:
         Label*  text;
+        static int maxSymbolsInLine;
 };
 
 #endif // TEXT_MESSAGE_H

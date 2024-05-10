@@ -13,6 +13,7 @@ protected:
 
 private:
         void createTextMessageSlot();
+        void shareDataSlot();
 
 private:
         PushButton*     send;
