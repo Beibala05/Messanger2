@@ -3,17 +3,17 @@
 
 #include "../include/include.h"
 
-class ScrollChat
+struct ScrollChat
 {
 public:
         explicit ScrollChat(Widget* parent);
 
 public:
-        void    resizeChat(int width, int height);
-        Widget* getChatPtr() {return this->chat;}
-        ScrollArea* getScrollWidgetPtr() {return this->scrollWidget;}
-        static  void addChatHeight(int height);
-        static  int  getChatHeight() {return chatHeight;}
+        void            resizeChat(int width, int height);
+        Widget*         getChatPtr() {return this->chat;}
+        ScrollArea*     getScrollWidgetPtr() {return this->scrollWidget;}
+        static  void    addChatHeight(int height);
+        static  int     getChatHeight() {return chatHeight;}
 
 private:
         Widget*         chat;

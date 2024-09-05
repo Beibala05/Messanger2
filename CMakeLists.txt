@@ -15,22 +15,26 @@ set(SOURCES
     src/app/main.cpp
     src/messanger/messanger.cpp
     src/messanger/tools.cpp
-    src/read_file.cpp
+    src/help.cpp
     src/messages/abstract.cpp
     src/messages/text_message.cpp
     src/messages/photo_message.cpp
     src/messanger/scroll_chat.cpp
+    src/photo_redactor.cpp
+    src/save_load_chat.cpp
 )
 
 set(HEADERS
     src/include/include.h
     src/messanger/messanger.h
     src/messanger/tools.h
-    src/read_file.h
+    src/help.h
     src/messages/abstract.h
     src/messages/text_message.h
     src/messages/photo_message.h
     src/messanger/scroll_chat.h
+    src/photo_redactor.h
+    src/save_load_chat.h
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
@@ -45,6 +49,7 @@ set(CSS_FILES
     styles/message.css
     styles/chat.css
     styles/message_item.css
+    styles/copy_text_from_message_button.css
 )
 
 foreach(CSS_FILE ${CSS_FILES})

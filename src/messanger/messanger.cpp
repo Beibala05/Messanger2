@@ -1,7 +1,8 @@
 #include "messanger.h"
 
-#include "../read_file.h"
+#include "../help.h"
 #include "../messages/abstract.h"
+#include "../save_load_chat.h"
 
 Messanger::Messanger(Widget* parent) : MainWindow(parent)
 {
@@ -13,12 +14,31 @@ Messanger::Messanger(Widget* parent) : MainWindow(parent)
         
         chat  = new ScrollChat(centralWidget);
         tools = new Tools(centralWidget, chat->getChatPtr(), chat->getScrollWidgetPtr());
+        ph_redactor = new PhotoRedactor();
+
+        try {
+                createJSON(StandardPaths::writableLocation(StandardPaths::HomeLocation));
+        }  
+        catch (...) {
+                MessageBox::critical(nullptr, "Error", "Permision defined error");
+        }
+
+        try {
+                load_chat(chat->getScrollWidgetPtr(), chat->getChatPtr(), centralWidget
+                , StandardPaths::writableLocation(StandardPaths::HomeLocation));
+        }
+        catch (...) {
+                MessageBox::critical(nullptr, "Error", "Error loading the chat");
+        }
 }
 
 Messanger::~Messanger()
 {
         delete tools;
         delete chat;
+        delete ph_redactor;
+
+        save_chat(StandardPaths::writableLocation(StandardPaths::HomeLocation));
 }
 
 void Messanger::resizeEvent(ResizeEvent* event)

@@ -11,31 +11,46 @@ enum MessagePosition : u_sh
         LEFT
 };
 
+enum MessageType : u_sh
+{
+        PHOTO,
+        TEXT        
+};
+
+struct MessageData
+{
+        String  data;
+        String  user_name;
+        String  time;
+        u_sh    message_type;
+};
+
 class AbstractMessage : public Widget
 {
 public:
-        AbstractMessage();
-        virtual ~AbstractMessage();
+                                                AbstractMessage();
+        virtual                                 ~AbstractMessage();
 
 public:
-        void setSizes(u_sh pos, int height);
-        void handOverCentralWidget(Widget* centralWidget);
-        static void addMessage(AbstractMessage* message);
-        static void correctCoordsForRightMessages(int width);
-        static int  count();
+        void                                    setSizes(u_sh pos, int height);
+        void                                    handOverCentralWidget(Widget* centralWidget);
+        static void                             addMessage(AbstractMessage* message);
+        static void                             correctCoordsForRightMessages(int width);
+        static int                              count();
+        String                                  getCurrentTime();
+        String                                  getUserName();
 
 public:
-        static int abstractMessageWidth;
+        static int                              abstractMessageWidth;
+        static std::vector<AbstractMessage *>   messages;
+        MessageData                             message_data;
+
 
 private:
-        String getCurrentTime();
-
-private:
-        Label*  userName;
-        Label*  time;
-        Widget* centralWidget;
-        static std::vector<AbstractMessage *> messages;
-        u_sh    pos;
+        Label*                                  userName;
+        Label*                                  time;
+        Widget*                                 centralWidget;
+        u_sh                                    pos;
 };
 
 #endif // ABSTRACT_MESSAGE_H

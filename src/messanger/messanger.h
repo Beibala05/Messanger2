@@ -2,6 +2,7 @@
 #define MESSANGER_H
 
 #include "../include/include.h"
+#include "../photo_redactor.h"
 
 #include "tools.h"
 #include "scroll_chat.h"
@@ -22,6 +23,7 @@ private:
         Widget*         centralWidget;
         Tools*          tools;
         ScrollChat*     chat;
+        PhotoRedactor*  ph_redactor;
 };
 
 #endif // MESSANGER_H

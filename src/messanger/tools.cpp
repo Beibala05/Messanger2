@@ -1,6 +1,6 @@
 #include "tools.h"
 
-#include "../read_file.h"
+#include "../help.h"
 
 #include "../messages/abstract.h"
 #include "../messages/text_message.h"
@@ -73,9 +73,5 @@ void Tools::shareDataSlot()
                 u_sh position = AbstractMessage::count() % 2 == 0 ? MessagePosition::RIGHT : MessagePosition::LEFT; 
                 AbstractMessage* newPhotoMessage = new PhotoMessage(scrollWidget, chat, parent, position, fileDir);
                 message->clear();
-
-                qDebug() << fileDir;
         }
-        else
-                qDebug() << "error";
 }

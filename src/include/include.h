@@ -22,9 +22,18 @@
 #include <QFileDialog>
 #include <QStringList>
 #include <QPixmap>
+#include <QClipboard>
+#include <QStandardPaths>
+#include <QMessageBox>
 
-#define MINIMUM_MESSAGER_HEIGHT 600 * 1.5
-#define MINIMUM_MESSAGER_WIDTH  775 * 1.5
+
+#define MINIMUM_MESSAGER_HEIGHT     600 * 1.5
+#define MINIMUM_MESSAGER_WIDTH      775 * 1.5
+
+#define PATH_IS_EMPTY               -1
+#define FILE_IS_EMPTY               -2
+#define FILE_IS_NOT_EXISTS          -3
+
 
 using Application       = QApplication;
 using MainWindow        = QMainWindow;
@@ -44,6 +53,8 @@ using Time              = QTime;
 using FileDialog        = QFileDialog;
 using StringList        = QStringList;
 using Pixmap            = QPixmap;
+using StandardPaths     = QStandardPaths;
+using MessageBox        = QMessageBox;
 
 typedef unsigned short u_sh;
 

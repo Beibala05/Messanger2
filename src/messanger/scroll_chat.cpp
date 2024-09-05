@@ -1,6 +1,6 @@
 #include "scroll_chat.h"
 
-#include "../read_file.h"
+#include "../help.h"
 
 int ScrollChat::chatHeight = 0;
 

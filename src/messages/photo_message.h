@@ -2,16 +2,24 @@
 #define PHOTO_MESSAGE_H
 
 #include "../include/include.h"
+#include "../photo_redactor.h"
 #include "abstract.h"
 
-class PhotoMessage : public AbstractMessage
+struct PhotoMessage : AbstractMessage
 {
-public:
         PhotoMessage(ScrollArea* scrollWidget, Widget* parent, Widget* centralWidget, u_sh position
         , const String& filePath);
 
+        PhotoMessage(ScrollArea* scrollWidget, Widget* parent, Widget* centralWidget, u_sh position
+        , const String& filePath, const String& time, const String& userName);
+
 private:
-        Label*  image;
-        static int photoMessageHeight;
+        void fullScreenSlot();
+
+        Label*          image;
+        PushButton*     full_screen;
+        String          photo_path;
+        static int      photoMessageHeight;
 };
+
 #endif // PHOTO_MESSAGE_H

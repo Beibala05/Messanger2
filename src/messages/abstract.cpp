@@ -1,6 +1,6 @@
 #include "abstract.h"
 
-#include "../read_file.h"
+#include "../help.h"
 #include "../messanger/scroll_chat.h"
 
 std::vector<AbstractMessage *> AbstractMessage::messages;
@@ -10,12 +10,11 @@ AbstractMessage::AbstractMessage()
 {
         this->setStyleSheet(read("../styles/message.css"));
         userName = new Label(this);
-        userName->setGeometry(0, 0, 250, 20);
+        userName->setGeometry(0, 0, 230, 20);
         userName->setText("user name");
         userName->setStyleSheet(read("../styles/message_item.css"));
 
         time = new Label(this);
-        time->setGeometry(0, 0, 250, 20);
         time->setText(getCurrentTime());
         time->setAlignment(Qt::AlignRight);
         time->setStyleSheet(read("../styles/message_item.css"));
@@ -55,7 +54,7 @@ void AbstractMessage::addMessage(AbstractMessage* message)
 
 int AbstractMessage::count()
 {
-        AbstractMessage::messages.size(); 
+        return AbstractMessage::messages.size(); 
 }
 
 void AbstractMessage::handOverCentralWidget(Widget* centralWidget)
@@ -75,3 +74,8 @@ void AbstractMessage::correctCoordsForRightMessages(int width)
                 }
         }
 }
+
+String AbstractMessage::getUserName()
+{
+        return userName->text();
+}       
