@@ -5,6 +5,7 @@
 #include "../messages/abstract.h"
 #include "../messages/text_message.h"
 #include "../messages/photo_message.h"
+#include "../user.h"
 
 Tools::Tools(Widget* parent, Widget* chat, ScrollArea* scrollWidget)
 {
@@ -53,8 +54,22 @@ void Tools::resizeEvent(ResizeEvent* event)
 
 void Tools::createTextMessageSlot()
 {
-        if (message->text().isEmpty()) return;
+        if (message->text().isEmpty()) 
+                return;
         
+        if (message->text().contains("@new_user_name "))
+        {
+                String new_user_name = message->text();
+
+                new_user_name.remove("@new_user_name ");
+                MessageBox::information(nullptr, "new user name", "Your new user name is " + new_user_name);
+                set_user_name(new_user_name);
+                message->clear();
+
+                return;
+        }
+
+
         u_sh position = AbstractMessage::count() % 2 == 0 ? MessagePosition::RIGHT : MessagePosition::LEFT; 
         AbstractMessage* newTextMessage = new TextMessage(scrollWidget, chat, parent, position, message->text());
         message->clear();

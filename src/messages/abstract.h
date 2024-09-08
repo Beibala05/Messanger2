@@ -25,22 +25,21 @@ struct MessageData
         u_sh    message_type;
 };
 
-class AbstractMessage : public Widget
+struct AbstractMessage : Widget
 {
-public:
                                                 AbstractMessage();
         virtual                                 ~AbstractMessage();
 
-public:
         void                                    setSizes(u_sh pos, int height);
         void                                    handOverCentralWidget(Widget* centralWidget);
         static void                             addMessage(AbstractMessage* message);
         static void                             correctCoordsForRightMessages(int width);
         static int                              count();
+        String                                  getUserNameFromMessage();
         String                                  getCurrentTime();
-        String                                  getUserName();
+        Label*                                  getTimePtr();
+        Label*                                  getUserNamePtr();
 
-public:
         static int                              abstractMessageWidth;
         static std::vector<AbstractMessage *>   messages;
         MessageData                             message_data;

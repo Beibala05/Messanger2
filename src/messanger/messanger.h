@@ -7,23 +7,25 @@
 #include "tools.h"
 #include "scroll_chat.h"
 
-class Tools;
-class ScrollChat;
+struct Tools;
+struct ScrollChat;
 
-class Messanger : public MainWindow
+struct Messanger : MainWindow
 {
-public:
-        explicit Messanger(Widget* parent = nullptr);
-        ~Messanger();
+        explicit        Messanger(Widget* parent = nullptr);
+                        ~Messanger();
+        void            show_user_name();
 
 protected:
-	void resizeEvent(ResizeEvent* event) override;
+	void            resizeEvent(ResizeEvent* event) override;
 
 private:
         Widget*         centralWidget;
         Tools*          tools;
         ScrollChat*     chat;
         PhotoRedactor*  ph_redactor;
+        PushButton*     user;
+        PushButton*     net_connect;
 };
 
 #endif // MESSANGER_H

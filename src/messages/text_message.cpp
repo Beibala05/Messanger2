@@ -2,6 +2,7 @@
 
 #include "../help.h"
 #include "../messanger/scroll_chat.h"
+#include "../user.h"
 
 #include <string>
 #include <iostream>
@@ -14,7 +15,10 @@ TextMessage::TextMessage(ScrollArea* scrollWidget, Widget* parent, Widget* centr
         this->message_data.data = __text;
         this->message_data.message_type = MessageType::TEXT;
         this->message_data.time = this->getCurrentTime();
-        this->message_data.user_name = this->getUserName();
+        this->message_data.user_name = get_user_name();
+        
+        this->getTimePtr()->setText(this->getCurrentTime());
+        this->getUserNamePtr()->setText(get_user_name());
 
         AbstractMessage::addMessage(this);
         this->setParent(parent);
@@ -55,7 +59,10 @@ TextMessage::TextMessage(ScrollArea* scrollWidget, Widget* parent, Widget* centr
         this->message_data.data = data;
         this->message_data.message_type = MessageType::TEXT;
         this->message_data.time = time;
-        this->message_data.user_name = userName;
+        this->message_data.user_name = get_user_name();
+
+        this->getTimePtr()->setText(time);
+        this->getUserNamePtr()->setText(get_user_name());
 
         AbstractMessage::addMessage(this);
         this->setParent(parent);

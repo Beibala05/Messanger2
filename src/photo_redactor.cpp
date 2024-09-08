@@ -12,7 +12,6 @@ PhotoRedactor::PhotoRedactor()
     window->resize(1200, 800);
     window->setMinimumSize(1200, 800);
     window->setMaximumSize(1200, 800);
-    window->setWindowTitle("Photo");
     window->setStyleSheet(read("../styles/chat.css"));
     window->setWindowModality(Qt::ApplicationModal);
 
@@ -31,6 +30,7 @@ PhotoRedactor::~PhotoRedactor()
 
 void PhotoRedactor::onFullScreen(const String& file_path)
 {
+    window->setWindowTitle(file_path);
     Pixmap pixmap(file_path);
     photo->setPixmap(pixmap);
     window->show();

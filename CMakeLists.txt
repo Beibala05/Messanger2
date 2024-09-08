@@ -22,6 +22,7 @@ set(SOURCES
     src/messanger/scroll_chat.cpp
     src/photo_redactor.cpp
     src/save_load_chat.cpp
+    src/user.cpp
 )
 
 set(HEADERS
@@ -35,6 +36,7 @@ set(HEADERS
     src/messanger/scroll_chat.h
     src/photo_redactor.h
     src/save_load_chat.h
+    src/user.h
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
@@ -50,6 +52,7 @@ set(CSS_FILES
     styles/chat.css
     styles/message_item.css
     styles/copy_text_from_message_button.css
+    styles/user_wifi_buttons.css
 )
 
 foreach(CSS_FILE ${CSS_FILES})

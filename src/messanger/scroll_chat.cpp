@@ -2,7 +2,7 @@
 
 #include "../help.h"
 
-int ScrollChat::chatHeight = 0;
+int ScrollChat::chatHeight = 50;
 
 ScrollChat::ScrollChat(Widget* parent)
 {
