@@ -35,26 +35,26 @@
 #define FILE_IS_NOT_EXISTS          -3
 
 
-using Application       = QApplication;
-using MainWindow        = QMainWindow;
-using Widget            = QWidget;
-using LineEdit          = QLineEdit;
-using PushButton        = QPushButton;
-using ResizeEvent       = QResizeEvent;
-using String            = QString;
-using File              = QFile;
-using Font              = QFont;
-using Icon              = QIcon;
-using Size              = QSize;
-using Object            = QObject;
-using Label             = QLabel;
-using ScrollArea        = QScrollArea;
-using Time              = QTime;
-using FileDialog        = QFileDialog;
-using StringList        = QStringList;
-using Pixmap            = QPixmap;
-using StandardPaths     = QStandardPaths;
-using MessageBox        = QMessageBox;
+using Application       			= QApplication;
+using MainWindow        			= QMainWindow;
+using Widget            			= QWidget;
+using LineEdit          			= QLineEdit;
+using PushButton        			= QPushButton;
+using ResizeEvent       			= QResizeEvent;
+using String            			= QString;
+using File              			= QFile;
+using Font              			= QFont;
+using Icon              			= QIcon;
+using Size              			= QSize;
+using Object            			= QObject;
+using Label             			= QLabel;
+using ScrollArea        			= QScrollArea;
+using Time              			= QTime;
+using FileDialog        			= QFileDialog;
+using StringList        			= QStringList;
+using Pixmap            			= QPixmap;
+using StandardPaths     			= QStandardPaths;
+using MessageBox        			= QMessageBox;
 
 typedef unsigned short u_sh;
 

@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-#if defined(__linux__) || defined(_WIN32)
+#ifdef __linux__
 
-class Messanger;
+struct Messanger;
 
 int main(int argc, char** argv)
 {
@@ -18,5 +18,5 @@ int main(int argc, char** argv)
 }
 
 #else
-        #error "run failure"
+        #error "linux only"
 #endif

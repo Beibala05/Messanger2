@@ -14,7 +14,7 @@ struct PhotoMessage : AbstractMessage
         , const String& filePath, const String& time, const String& userName);
 
 private:
-        void fullScreenSlot();
+        void            fullScreenSlot();
 
         Label*          image;
         PushButton*     full_screen;

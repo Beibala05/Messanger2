@@ -3,19 +3,19 @@
 
 #include "../include/include.h"
 
-class Tools : public Widget
+struct Tools : Widget
 {
-public:
         Tools(Widget* parent, Widget* chat, ScrollArea* scrollWidget);
 
+
 protected:
-	void resizeEvent(ResizeEvent* event) override;
+	void            resizeEvent(ResizeEvent* event) override;
+
 
 private:
-        void createTextMessageSlot();
-        void shareDataSlot();
+        void            createTextMessageSlot();
+        void            shareDataSlot();
 
-private:
         PushButton*     send;
         PushButton*     share;
         LineEdit*       message;

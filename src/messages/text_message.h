@@ -4,9 +4,8 @@
 #include "../include/include.h"
 #include "abstract.h"
 
-class TextMessage : public AbstractMessage
+struct TextMessage : AbstractMessage
 {
-public:
         TextMessage(ScrollArea* scrollWidget, Widget* parent, Widget* centralWidget, u_sh position
         , const String& __text);
         
@@ -14,10 +13,9 @@ public:
         , const String& data, const String& time, const String& userName);
 
 private:
-        String parse(const String& __text);
-        void copyMessageTextSlot();
+        String          parse(const String& __text);
+        void            copyMessageTextSlot();
 
-private:
         Label*          text;
         PushButton*     copy_text;
         static int      maxSymbolsInLine;
