@@ -5,7 +5,10 @@
 #include "../messages/abstract.h"
 #include "../messages/text_message.h"
 #include "../messages/photo_message.h"
+#include "messanger.h"
 #include "../user.h"
+
+#include "../net/work.h"
 
 Tools::Tools(Widget* parent, Widget* chat, ScrollArea* scrollWidget)
 {
@@ -72,6 +75,7 @@ void Tools::createTextMessageSlot()
 
         u_sh position = AbstractMessage::count() % 2 == 0 ? MessagePosition::RIGHT : MessagePosition::LEFT; 
         AbstractMessage* newTextMessage = new TextMessage(scrollWidget, chat, parent, position, message->text());
+        net::send_message_to_server(message->text().toStdString(), Messanger::get_socket_ptr());
         message->clear();
 }
 

@@ -20,6 +20,8 @@ set(SOURCES
     src/messages/text_message.cpp
     src/messages/photo_message.cpp
     src/messanger/scroll_chat.cpp
+    src/net/client.cpp
+    src/net/work.cpp
     src/photo_redactor.cpp
     src/save_load_chat.cpp
     src/user.cpp
@@ -34,6 +36,8 @@ set(HEADERS
     src/messages/text_message.h
     src/messages/photo_message.h
     src/messanger/scroll_chat.h
+    src/net/client.h
+    src/net/work.h
     src/photo_redactor.h
     src/save_load_chat.h
     src/user.h

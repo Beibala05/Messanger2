@@ -76,8 +76,6 @@ void load_chat(ScrollArea* scrollWidget, Widget* parent, Widget* centralWidget, 
         std::string     _user_name   = j[msg_n.toStdString()]["user_name"];
         std::string     _data        = j[msg_n.toStdString()]["data"];
 
-
-
         u_sh position = AbstractMessage::count() % 2 == 0 ? MessagePosition::RIGHT : MessagePosition::LEFT;
 
         if (_type == MessageType::TEXT)
